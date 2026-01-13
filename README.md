@@ -102,7 +102,7 @@ vaibhav-portfolio/
 
 1. **Clone the repository**
     ```bash
-   git clone https://github.com/Vaibhav0120/portfolio.git
+   git clone https://github.com/Vaibhavsh0120/portfolio.git
    cd portfolio
     ```
 

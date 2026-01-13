@@ -1,27 +1,29 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
-import { Code, Palette, Zap, Award, GraduationCap, Coffee, Heart, Lightbulb } from 'lucide-react'
+import { Code, Palette, Zap, Award, Coffee, Heart, Lightbulb, Target } from 'lucide-react'
+import ExperienceSection from "./experience-section"
 
 const skills = [
   {
     icon: Code,
-    title: "Development",
-    description: "Full-stack development with React, Next.js, Node.js, and modern frameworks",
-    technologies: ["React", "Next.js", "TypeScript", "Node.js", "Python"]
+    title: "Programming Languages",
+    description: "Proficient in multiple programming languages for diverse application development",
+    technologies: ["Python", "Java", "C++", "JavaScript", "TypeScript", "Dart"]
   },
   {
     icon: Palette,
-    title: "Design",
-    description: "Creating beautiful, intuitive user interfaces with attention to detail",
-    technologies: ["Figma", "Tailwind CSS", "Framer Motion", "UI/UX", "Design Systems"]
+    title: "Web & Mobile Development",
+    description: "Building responsive web applications and cross-platform mobile apps with modern frameworks",
+    technologies: ["React.js", "Flask", "Flutter", "HTML", "CSS", "Firebase"]
   },
   {
     icon: Zap,
-    title: "Performance",
-    description: "Optimizing applications for speed, scalability, and user experience",
-    technologies: ["Performance", "SEO", "Accessibility", "Testing", "DevOps"]
+    title: "AI/ML & Tools",
+    description: "Developing intelligent systems with machine learning and managing projects with industry-standard tools",
+    technologies: ["TensorFlow", "Git", "Computer Vision", "Deep Learning", "YOLOv8"]
   }
 ]
 
@@ -35,29 +37,36 @@ const personalTraits = [
     icon: Lightbulb,
     title: "Continuous Learner",
     description: "Always exploring new technologies and pushing creative boundaries"
+  },
+  {
+    icon: Target,
+    title: "Results-Driven",
+    description: "Focused on delivering measurable impact and achieving production-ready outcomes"
   }
 ]
 
 function FloatingElements() {
+  // Reduced from 8 to 4 elements for better performance
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {Array.from({ length: 8 }, (_, i) => (
+      {Array.from({ length: 4 }, (_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-neutral-300/20 dark:bg-neutral-600/20 rounded-full"
+          className="absolute w-2 h-2 bg-neutral-300/15 dark:bg-neutral-600/15 rounded-full will-change-transform"
           style={{
-            left: `${15 + i * 12}%`,
-            top: `${8 + i * 11}%`,
+            left: `${20 + i * 25}%`,
+            top: `${15 + i * 25}%`,
           }}
           animate={{
-            y: [0, -25, 0],
-            opacity: [0.2, 0.6, 0.2],
-            scale: [1, 1.2, 1],
+            y: [0, -20, 0],
+            opacity: [0.15, 0.4, 0.15],
+            scale: [1, 1.15, 1],
           }}
           transition={{
-            duration: 4 + i * 0.8,
+            duration: 5 + i * 1.5,
             repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
+            repeatType: "loop",
           }}
         />
       ))}
@@ -100,8 +109,8 @@ export default function AboutSection() {
             About Me
           </h2>
           <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            I&apos;m a passionate Computer Science student who believes in the harmony between technology and creativity. 
-            Just like music, great code has rhythm, structure, and soul.
+            A passionate Computer Science student specializing in AI/ML, Full-Stack Development, and Cybersecurity. 
+            Building production-ready solutions with measurable impact—from 94.2% accurate surveillance systems to hackathon-winning healthcare applications.
           </p>
         </motion.div>
 
@@ -109,17 +118,17 @@ export default function AboutSection() {
         <div className="grid lg:grid-cols-5 gap-8 md:gap-12 items-center mb-16 md:mb-20">
           {/* Image Section */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
             className="lg:col-span-2 flex justify-center"
           >
             <div className="relative group">
               {/* Decorative background elements */}
-              <div className="absolute -inset-8 bg-gradient-to-r from-neutral-200/40 via-neutral-300/40 to-neutral-200/40 
-                            dark:from-neutral-700/40 dark:via-neutral-600/40 dark:to-neutral-700/40 
-                            rounded-3xl blur-3xl group-hover:blur-[40px] transition-all duration-700 opacity-60" />
+              <div className="absolute -inset-8 bg-gradient-to-r from-neutral-200/30 via-neutral-300/30 to-neutral-200/30 
+                            dark:from-neutral-700/30 dark:via-neutral-600/30 dark:to-neutral-700/30 
+                            rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-50" />
               
               <div className="absolute -inset-4 bg-gradient-to-br from-white/50 to-neutral-100/50 
                             dark:from-neutral-800/50 dark:to-neutral-900/50 rounded-2xl rotate-3 
@@ -129,11 +138,15 @@ export default function AboutSection() {
                 <div className="w-full h-full rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-3xl 
                               transition-all duration-500 border-4 border-white dark:border-neutral-800
                               group-hover:scale-[1.02] relative">
-                  <img
+                  <Image
                     src="/images/profile/vaibhav-about.png"
                     alt="Vaibhav Sharma with guitar - passionate developer and musician"
+                    width={384}
+                    height={512}
                     className="w-full h-full object-cover object-center filter grayscale group-hover:grayscale-0 
                              transition-all duration-700 group-hover:scale-105"
+                    priority
+                    loading="eager"
                   />
                   
                   {/* Overlay gradient */}
@@ -147,10 +160,10 @@ export default function AboutSection() {
 
           {/* Content Section */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            viewport={{ once: true, margin: "-100px" }}
             className="lg:col-span-3"
           >
             <div className="relative">
@@ -165,7 +178,8 @@ export default function AboutSection() {
                   </h3>
                   <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
                     Currently pursuing BTech in Computer Science and Engineering from IPEC, Ghaziabad (2023-2027). 
-                    My journey combines technical excellence with creative expression, much like composing a symphony of code.
+                    With hands-on experience in AI/ML, cybersecurity, and full-stack development, I&apos;ve built production-ready systems 
+                    achieving 94.2% accuracy in real-world deployments and won 2nd Runner-Up positions in multiple hackathons.
                   </p>
                 </div>
 
@@ -174,13 +188,13 @@ export default function AboutSection() {
                   {personalTraits.map((trait, index) => (
                     <motion.div
                       key={trait.title}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 15 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.2 + index * 0.08 }}
+                      viewport={{ once: true, margin: "-50px" }}
                       className="flex items-start gap-4 p-4 rounded-xl bg-white/60 dark:bg-neutral-800/60 
                                backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50
-                               hover:bg-white/80 dark:hover:bg-neutral-800/80 transition-all duration-300
+                               hover:bg-white/80 dark:hover:bg-neutral-800/80 transition-all duration-200
                                group cursor-default"
                     >
                       <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neutral-100 to-neutral-200 
@@ -200,86 +214,13 @@ export default function AboutSection() {
                   ))}
                 </div>
 
-                {/* Enhanced Experience Section */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  viewport={{ once: true }}
-                  className="mt-8"
-                >
-                  <div className="relative">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-blue-100/50 via-indigo-100/50 to-purple-100/50 
-                                  dark:from-blue-950/30 dark:via-indigo-950/30 dark:to-purple-950/30 
-                                  rounded-2xl blur-xl opacity-60" />
-                    
-                    <div className="relative bg-gradient-to-r from-blue-50/80 to-indigo-50/80 
-                                   dark:from-blue-950/40 dark:to-indigo-950/40 backdrop-blur-sm
-                                   rounded-2xl p-6 md:p-8 border border-blue-200/50 dark:border-blue-800/30">
-                      
-                      <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 mb-6">
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 
-                                        flex items-center justify-center shadow-lg">
-                            <GraduationCap className="w-6 h-6 md:w-7 md:h-7 text-white" />
-                          </div>
-                          <div>
-                            <h4 className="text-lg md:text-xl font-bold text-blue-900 dark:text-blue-100">
-                              CISCO Networking Academy
-                            </h4>
-                            <p className="text-sm md:text-base text-blue-700 dark:text-blue-300 font-medium">
-                              Virtual Internship Program
-                            </p>
-                          </div>
-                        </div>
-                        
-                        <div className="md:ml-auto">
-                          <span className="inline-block px-3 py-1.5 text-xs md:text-sm font-semibold 
-                                         bg-blue-600 text-white rounded-full shadow-sm">
-                            May 2024 - Jul 2024
-                          </span>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-4">
-                        <p className="text-sm md:text-base text-blue-800 dark:text-blue-200 leading-relaxed">
-                          Gained comprehensive hands-on experience in networking technologies and protocols during 
-                          this intensive 3-month program, working with industry-standard tools and real-world scenarios.
-                        </p>
-                        
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div className="flex items-start gap-3">
-                            <div className="w-2 h-2 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
-                            <div>
-                              <h5 className="font-semibold text-blue-900 dark:text-blue-100 text-sm">
-                                Network Infrastructure
-                              </h5>
-                              <p className="text-xs md:text-sm text-blue-700 dark:text-blue-300">
-                                Routing, switching, and network security protocols
-                              </p>
-                            </div>
-                          </div>
-                          
-                          <div className="flex items-start gap-3">
-                            <div className="w-2 h-2 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
-                            <div>
-                              <h5 className="font-semibold text-blue-900 dark:text-blue-100 text-sm">
-                                Practical Implementation
-                              </h5>
-                              <p className="text-xs md:text-sm text-blue-700 dark:text-blue-300">
-                                Real-world networking scenarios and troubleshooting
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
               </div>
             </div>
           </motion.div>
         </div>
+
+        {/* Experience Section */}
+        <ExperienceSection />
 
         {/* Skills Section */}
         <motion.div
