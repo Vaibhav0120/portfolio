@@ -20,7 +20,7 @@ export async function GET() {
         {/* CENTER CONTAINER */}
         <div
           style={{
-            width: '700px',
+            width: '760px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -30,22 +30,22 @@ export async function GET() {
           {/* Accent Line */}
           <div
             style={{
-              width: '72px',
-              height: '4px',
+              width: '96px',
+              height: '6px',
               backgroundColor: '#fff',
-              marginBottom: '32px',
-              boxShadow: '0 0 14px rgba(255,255,255,0.5)',
+              marginBottom: '36px',
+              boxShadow: '0 0 10px rgba(255,255,255,0.4)',
             }}
           />
 
           {/* Name */}
           <div
             style={{
-              fontSize: '88px',
+              fontSize: '104px',
               fontWeight: 800,
-              lineHeight: 1.05,
-              letterSpacing: '-0.03em',
-              textShadow: '0 0 20px rgba(255,255,255,0.35)',
+              lineHeight: 1.04,
+              letterSpacing: '-0.025em',
+              textShadow: '0 0 10px rgba(255,255,255,0.25)',
             }}
           >
             Vaibhav Sharma
@@ -54,11 +54,12 @@ export async function GET() {
           {/* Role */}
           <div
             style={{
-              marginTop: '20px',
-              fontSize: '34px',
-              letterSpacing: '0.14em',
+              marginTop: '24px',
+              fontSize: '40px',
+              fontWeight: 600,
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              opacity: 0.85,
+              opacity: 0.9,
             }}
           >
             Software Developer
