@@ -1,0 +1,9 @@
+{
+  "name": "node-domexception",
+  "version": "1.0.1",
+  "description": "Local compatibility shim for modern Node.js DOMException.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  }
+}
